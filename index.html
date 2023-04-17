@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assesment</title>
+	<script>
+		function validateForm() {
+			// Get input values
+			var name = document.forms["myForm"]["name"].value;
+			var password = document.forms["myForm"]["password"].value;
+			var confirmPassword = document.forms["myForm"]["confirmPassword"].value;
+			var phoneNumber = document.forms["myForm"]["phoneNumber"].value;
+			var email = document.forms["myForm"]["email"].value;
+
+			// Validate name field
+			if (name == "") {
+				alert("Name must be filled out");
+				return false;
+			}
+			if (!/^[a-zA-Z ]+$/.test(name)) {
+				alert("Name can only contain alphabets and spaces");
+				return false;
+			}
+
+			// Validate password field
+			if (password == "") {
+				alert("Password must be filled out");
+				return false;
+			}
+			if (password.length < 8) {
+				alert("Password should be at least 8 characters long");
+				return false;
+			}
+			if (password != confirmPassword) {
+				alert("Passwords do not match");
+				return false;
+			}
+
+			// Validate phone number field
+			if (phoneNumber == "") {
+				alert("Phone number must be filled out");
+				return false;
+			}
+			if (!/^\d{10}$/.test(phoneNumber)) {
+				alert("Phone number should be only 10 digits");
+				return false;
+			}
+
+			// Validate email field
+			if (email == "") {
+				alert("Email must be filled out");
+				return false;
+			}
+			if (!/^\S+@\S+\.\S+$/.test(email)) {
+				alert("Invalid email address");
+				return false;
+			}
+
+			// All fields are valid
+			return true;
+		}
+</script>
+<style>
+
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  margin: auto;
+  width: 50%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="email"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+input[type="submit"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #0062cc;
+}
+</style>
+	
+</head>
+<body>
+
+
+	<h2>My Assesment</h2>
+	<form name="myForm" onsubmit="return validateForm()">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name"><br><br>
+
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password"><br><br>
+
+		<label for="confirmPassword">Confirm Password:</label>
+		<input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+
+		<label for="phoneNumber">Phone Number:</label>
+		<input type="text" id="phoneNumber" name="phoneNumber"><br><br>
+
+		<label for="email">Email:</label>
+		<input type="text" id="email" name="email"><br><br>
+
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>
